@@ -68,7 +68,7 @@
       <h1>mapscanner</h1>
                         <h4 class="author">Mark Padgham and Michael D. Sumner</h4>
             
-            <h4 class="date">2019-08-04</h4>
+            <h4 class="date">2019-08-24</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mpadge/mapscanner/blob/master/vignettes/mapscanner.Rmd"><code>vignettes/mapscanner.Rmd</code></a></small>
       <div class="hidden name"><code>mapscanner.Rmd</code></div>
@@ -204,7 +204,7 @@
 <div id="bonus-feature-polygon-aggregation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bonus-feature-polygon-aggregation" class="anchor"></a>Bonus Feature: Polygon Aggregation</h2>
-<p>Maps are typically used in social surveys to delineate participant’s understanding or perception of particular regions or areas. In such contexts, surveys often result in numerous polygonal shapes representing different perceptions of a particular region. The <code>mapscanner</code> package provides an additional function, <code><a href="../reference/ms_aggregate_polys.html">ms_aggregate_polys()</a></code>, to aggregate polygons into a single “heat map” containing vector outlines of aggregated polygons. Each component of these aggregated polygons defines the region within which <code>n</code> polygons overlap.</p>
+<p>Maps are typically used in social surveys to delineate participants’ understanding or perception of particular regions or areas. In such contexts, surveys often result in numerous polygonal shapes representing different perceptions of a particular region. The <code>mapscanner</code> package provides an additional function, <code><a href="../reference/ms_aggregate_polys.html">ms_aggregate_polys()</a></code>, to aggregate polygons into a single “heat map” containing vector outlines of aggregated polygons. Each component of these aggregated polygons defines the region within which <code>n</code> polygons overlap.</p>
 <p>The function is now illustrated with a slightly more complicated version of the example provided for <code><a href="../reference/ms_aggregate_polys.html">ms_aggregate_polys()</a></code>, starting by generating a series of polygons as convex hulls surrounding random points.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">n &lt;-<span class="st"> </span><span class="dv">5</span> <span class="co"># number of polygons</span></a>
 <a class="sourceLine" id="cb20-2" data-line-number="2">polys &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">lapply</a></span> (<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq">seq</a></span> (n), <span class="cf">function</span> (i) {</a>
