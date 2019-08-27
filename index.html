@@ -88,39 +88,54 @@
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>usage</h2>
-<p>Package comes with a sample map of Omaha, Nebraska, USA, and one with some red lines drawn on it: <img src="reference/figures/omaha-polygons.png"></p>
+<div id="mapbox-api-tokens" class="section level3">
+<h3 class="hasAnchor">
+<a href="#mapbox-api-tokens" class="anchor"></a>Mapbox API tokens</h3>
+<p>Map generation with <code>mapscanner</code> requires a personal token or key from <a href="https://mapbox.com"><code>mapbox</code></a>, which can be obtained by following the links from <a href="https://docs.mapbox.com/api/#access-tokens-and-token-scopes">https://docs.mapbox.com/api</a>. If you already have a token, the easier way to use it with <code>mapscanner</code> is to create (or edit) a file <code>~/.Renviron</code>, and insert a line,</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="va">MAPBOX_TOKEN=</span><span class="op">&lt;</span><span class="ex">my_mapbox_token</span><span class="op">&gt;</span></a></code></pre></div>
+<p>This will then be available every time you start R. The token may be given any unique name that includes “mapbox” (case insensitive). Alternatively, if you wish to keep your token truly private, and only use it for your current R session, you may load <code>mapscanner</code>, and then type <code>set_mapbox_token(&lt;my_mapbox_token&gt;)</code>.</p>
+</div>
+<div id="map-generation" class="section level3">
+<h3 class="hasAnchor">
+<a href="#map-generation" class="anchor"></a>Map generation</h3>
+<p>Having obtained and set a <a href="https://mapbox.com"><code>mapbox</code></a> token as described above, <code>mapscanner</code> may then be used to generate maps. The package comes with a sample map of Omaha, Nebraska, USA, and one with some red lines drawn on it: <img src="reference/figures/omaha-polygons.png"></p>
 <p>That’s just a standard <code>png</code> image with no notion of geographical coordinates. The original map was generated with</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">bbox &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">rbind</a></span> (<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span> (<span class="op">-</span><span class="fl">96.12923</span>, <span class="fl">-96.01011</span>),</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">               <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span> (<span class="fl">41.26145</span>, <span class="fl">41.32220</span>)) <span class="co"># portion of omaha</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw"><a href="reference/ms_generate_map.html">ms_generate_map</a></span> (bbox, <span class="dt">max_tiles =</span> 16L, <span class="dt">mapname =</span> <span class="st">"omaha"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">bbox &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">rbind</a></span> (<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span> (<span class="op">-</span><span class="fl">96.12923</span>, <span class="fl">-96.01011</span>),</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">               <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span> (<span class="fl">41.26145</span>, <span class="fl">41.32220</span>)) <span class="co"># portion of omaha</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw"><a href="reference/ms_generate_map.html">ms_generate_map</a></span> (bbox, <span class="dt">max_tiles =</span> 16L, <span class="dt">mapname =</span> <span class="st">"omaha"</span>)</a></code></pre></div>
 <pre><code>#&gt; Successfully generated 'omaha.pdf' and 'omaha.png'</code></pre>
-<p>As indicated, the function generates a map in both <code>.pdf</code> and <code>.png</code> formats. These files must be retained as the “master” maps against which subsequently modified – drawn-over and scanned-in – versions will be rectified. The <code>.pdf</code> format is generated because it will generally be the most convenient for printing, while the rectification itself requires <code>.png</code>-format images. The magic happens via the <a href="https://github.com/jonclayden/RNiftyReg"><code>RNiftyReg</code> package</a>, itself primarily intended to align brain scans and other medical images, but which is precisely the tool needed here.</p>
-<p>The <code>mapscanner</code> package comes with two sample <code>.png</code> images which can be used to demonstrate functionality. In the following code, <code>f_modified</code> is the image shown above, modified from the original by drawing a red line around a particular region of Omaha.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">f_orig &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span> (<span class="st">"extdata"</span>, <span class="st">"omaha.png"</span>, <span class="dt">package =</span> <span class="st">"mapscanner"</span>)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">f_mod &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span> (<span class="st">"extdata"</span>, <span class="st">"omaha-polygons.png"</span>, <span class="dt">package =</span> <span class="st">"mapscanner"</span>)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.time">system.time</a></span> (res &lt;-<span class="st"> </span><span class="kw"><a href="reference/ms_rectify_maps.html">ms_rectify_maps</a></span> (f_orig, f_mod, <span class="dt">type =</span> <span class="st">"polygons"</span>))</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; ══ mapscanner ═════════════════════════════════════════════════════════════</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; ❯ rectifying the two maps </span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6">✔ rectifying the two maps </a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; ❯ extracting drawn objects </span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8">✔ extracting drawn objects </a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; ❯ converting to spatial format </span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10">✔ converting to spatial format</a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;    user  system elapsed </span></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;  26.052   0.845  15.889</span></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13">res</a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt; Simple feature collection with 2 features and 0 fields</span></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; geometry type:  POLYGON</span></a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; dimension:      XY</span></a>
-<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt; bbox:           xmin: -96.09474 ymin: 41.27929 xmax: -96.04931 ymax: 41.29681</span></a>
-<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt; epsg (SRID):    4326</span></a>
-<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt; proj4string:    +proj=longlat +datum=WGS84 +no_defs</span></a>
-<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt;                         geometry</span></a>
-<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt; 1 POLYGON ((-96.05646 41.2945...</span></a>
-<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt; 2 POLYGON ((-96.09474 41.2808...</span></a></code></pre></div>
+<p>As indicated, the function generates a map in both <code>.pdf</code> and <code>.png</code> formats. These files must be retained as the “master” maps against which subsequently modified – drawn-over and scanned-in – versions will be rectified. The <code>.pdf</code> format is generated because it will generally be the most convenient for printing, while the rectification itself requires <code>.png</code>-format images.</p>
+</div>
+<div id="map-rectification" class="section level3">
+<h3 class="hasAnchor">
+<a href="#map-rectification" class="anchor"></a>Map rectification</h3>
+<p>The magic within the <code>mapscanner</code> package happens via the <a href="https://github.com/jonclayden/RNiftyReg"><code>RNiftyReg</code> package</a>, itself primarily intended to align brain scans and other medical images, but which is precisely the tool needed here. The package comes with two sample <code>.png</code> images which can be used to demonstrate map rectification. In the following code, <code>f_modified</code> is the image shown above, modified from the original by drawing a red line around a particular region of Omaha.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">f_orig &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span> (<span class="st">"extdata"</span>, <span class="st">"omaha.png"</span>, <span class="dt">package =</span> <span class="st">"mapscanner"</span>)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">f_mod &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span> (<span class="st">"extdata"</span>, <span class="st">"omaha-polygons.png"</span>, <span class="dt">package =</span> <span class="st">"mapscanner"</span>)</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.time">system.time</a></span> (res &lt;-<span class="st"> </span><span class="kw"><a href="reference/ms_rectify_maps.html">ms_rectify_maps</a></span> (f_orig, f_mod, <span class="dt">type =</span> <span class="st">"polygons"</span>))</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; ══ mapscanner ═════════════════════════════════════════════════════════════</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; ❯ rectifying the two maps </span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">✔ rectifying the two maps </a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; ❯ extracting drawn objects </span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8">✔ extracting drawn objects </a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; ❯ converting to spatial format </span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10">✔ converting to spatial format</a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt;    user  system elapsed </span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt;  27.796   1.041  17.221</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13">res</a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; Simple feature collection with 2 features and 0 fields</span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; geometry type:  POLYGON</span></a>
+<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; dimension:      XY</span></a>
+<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; bbox:           xmin: -96.09474 ymin: 41.27929 xmax: -96.04931 ymax: 41.29681</span></a>
+<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt; epsg (SRID):    4326</span></a>
+<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt; proj4string:    +proj=longlat +datum=WGS84 +no_defs</span></a>
+<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt;                         geometry</span></a>
+<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt; 1 POLYGON ((-96.05646 41.2945...</span></a>
+<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt; 2 POLYGON ((-96.09474 41.2808...</span></a></code></pre></div>
 <p>The rectification can take quite some time, during which <a href="https://github.com/jonclayden/RNiftyReg"><code>RNiftyReg</code> package</a> is constructing the best transformation of the modified image back on to the original. The result of <code><a href="reference/ms_rectify_maps.html">ms_rectify_maps()</a></code> is a spatial object in <a href="https://cran.r-project.org/package=sf"><code>sf</code></a>-format in which each drawn component is represented as a separate polygon. Finally, we can plot the result as an interactive map using packages like <a href="https://github.com/symbolixAU/mapdeck"><code>mapdeck</code></a>, or <a href="https://github.com/r-spatial/mapview"><code>mapview</code></a>:</p>
 <p><img src="reference/figures/leaflet-1.png"></p>
 <p>And our hand-drawn lines shown above have been converted to standard spatial objects able to be analysed in any desired way. See the <a href="https://mpadge.github.io/mapscanner/articles/mapscanner.html">package vignette</a> for more detail of what the <code>mapscanner</code> package can do.</p>
+</div>
 </div>
 </div>
   </div>
