@@ -68,7 +68,7 @@
       <h1>mapscanner</h1>
                         <h4 class="author">Mark Padgham and Michael D. Sumner</h4>
             
-            <h4 class="date">2019-08-27</h4>
+            <h4 class="date">2019-08-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mpadge/mapscanner/blob/master/vignettes/mapscanner.Rmd"><code>vignettes/mapscanner.Rmd</code></a></small>
       <div class="hidden name"><code>mapscanner.Rmd</code></div>
@@ -121,9 +121,9 @@
 <div id="mapbox-api-tokens" class="section level2">
 <h2 class="hasAnchor">
 <a href="#mapbox-api-tokens" class="anchor"></a>Mapbox API tokens</h2>
-<p>Map generation with <code>mapscanner</code> requires a personal token or key from <a href="https://mapbox.com"><code>mapbox</code></a>, which can be obtained by following the links from <a href="https://docs.mapbox.com/api/#access-tokens-and-token-scopes">https://docs.mapbox.com/api</a>. If you already have a token, the easier way to use it with <code>mapscanner</code> is to create (or edit) a file <code>~/.Renviron</code>, and insert a line,</p>
+<p>Map generation with <code>mapscanner</code> requires a personal token or key from <a href="https://mapbox.com"><code>mapbox</code></a>, which can be obtained by following the links from <a href="https://docs.mapbox.com/api/#access-tokens-and-token-scopes">https://docs.mapbox.com/api</a>. If you already have a token, the easiest way to use it with <code>mapscanner</code> is to create (or edit) a file <code>~/.Renviron</code>, and insert a line,</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="va">MAPBOX_TOKEN=</span><span class="op">&lt;</span><span class="ex">my_mapbox_token</span><span class="op">&gt;</span></a></code></pre></div>
-<p>This will then be available every time you start R. The token may be given any unique name that includes “mapbox” (case insensitive). Alternatively, if you wish to keep your token truly private, and only use it for your current R session, you may load <code>mapscanner</code>, and then type <code>set_mapbox_token(&lt;my_mapbox_token&gt;)</code>.</p>
+<p>This will then be available every time you start R, without any need to explicitly set the token each time you want to use the package. The token may be given any unique name that includes “mapbox” (case insensitive). Alternatively, if you wish to keep your token truly private, and only use it for your current R session, you may load <code>mapscanner</code>, and then run <code>set_mapbox_token(&lt;my_mapbox_token&gt;)</code>.</p>
 </div>
 <div id="map-generation" class="section level2">
 <h2 class="hasAnchor">
@@ -261,6 +261,7 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
         <div id="tocnav">
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
