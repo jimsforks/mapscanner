@@ -36,8 +36,8 @@
 
 
 <meta property="og:title" content="ms_rectify_maps — ms_rectify_maps" />
-<meta property="og:description" content="Rectify two previously scanned-in pdf or png maps with `RNiftyReg`, and
-return the modifications in `map_modified` as spatial objects in sf
+<meta property="og:description" content="Rectify two previously scanned-in pdf or png maps with RNiftyReg, and
+return the modifications in map_modified as spatial objects in sf
 format." />
 <meta name="twitter:card" content="summary" />
 
@@ -113,8 +113,8 @@ format." />
     </div>
 
     <div class="ref-description">
-    <p>Rectify two previously scanned-in pdf or png maps with `RNiftyReg`, and
-return the modifications in `map_modified` as spatial objects in <span class="pkg">sf</span>
+    <p>Rectify two previously scanned-in pdf or png maps with <code>RNiftyReg</code>, and
+return the modifications in <code>map_modified</code> as spatial objects in <span class="pkg">sf</span>
 format.</p>
     </div>
 
@@ -128,12 +128,12 @@ format.</p>
     <tr>
       <th>map_original</th>
       <td><p>File name of the original map without anything drawn over
-it (either a `.pdf` or `.png`; extension will be ignored).</p></td>
+it (either a <code>.pdf</code> or <code>.png</code>; extension will be ignored).</p></td>
     </tr>
     <tr>
       <th>map_modified</th>
       <td><p>File name of the modified version with drawings (either a
-`.pdf` or `.png`; extension will be ignored).</p></td>
+<code>.pdf</code> or <code>.png</code>; extension will be ignored).</p></td>
     </tr>
     <tr>
       <th>non_linear</th>
@@ -150,34 +150,34 @@ around each group.</p></td>
     </tr>
     <tr>
       <th>downsample</th>
-      <td><p>Factor by which to downsample `type = "polygons"`, noting
+      <td><p>Factor by which to downsample <code>type = "polygons"</code>, noting
 that polygons initially include every outer pixel of image, so can generally
-be downsampled by at least an order or magnitude (`n = 10`). Higher values
+be downsampled by at least an order or magnitude (<code>n = 10</code>). Higher values
 may be used for higher-resolution images; lower values will generally only be
 necessary for very low lower resolution images.</p></td>
     </tr>
     <tr>
       <th>concavity</th>
-      <td><p>For `type = "hulls"`, a value between 0 and 1, with 0 giving
+      <td><p>For <code>type = "hulls"</code>, a value between 0 and 1, with 0 giving
 convex hulls and 1 giving highly concave hulls.</p></td>
     </tr>
     <tr>
       <th>length_threshold</th>
-      <td><p>For `type = "hulls"`, the minimal length of a segment
+      <td><p>For <code>type = "hulls"</code>, the minimal length of a segment
 to be made more convex. Low values will produce highly detailed hulls which
 may cause problems; if in doubt, or if odd results appear, increase this
 value.</p></td>
     </tr>
     <tr>
       <th>quiet</th>
-      <td><p>If `FALSE`, display progress information on screen</p></td>
+      <td><p>If <code>FALSE</code>, display progress information on screen</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>An <span class="pkg">sf</span> object representing the drawn additions to map_modified.</p>
-<p>The `non-linear` parameter should generally set according to how the modified
+<p>The <code>non-linear</code> parameter should generally set according to how the modified
 maps were digitised. A value of 0 will give fastest results, and should be
 used for directly scanned or photocopied images. A value of 1 (the default)
 still presumes modified images have been linearly translated, and will apply
@@ -185,7 +185,7 @@ affine transformations (rotations, contractions, dilations). This value
 should be used when modified images have been photographed (potentially from
 an oblique angle). A value of 2 should only be used when modified maps have
 somehow been non-linearly distorted, for example through having been crumpled
-or screwed up. Rectification with `non-linear = 2` will likely take
+or screwed up. Rectification with <code>non-linear = 2</code> will likely take
 considerably longer than with lower values.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
