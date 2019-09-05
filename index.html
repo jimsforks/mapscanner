@@ -74,6 +74,12 @@
 <!-- badges: start -->
 
 <p>R package to print maps, draw on them, scan them back in, and convert to spatial objects. Currently <a href="https://github.com/ropensci/software-review/issues/330#event-2513283441">under review</a> at <a href="https://ropensci.org">rOpenSci</a>.</p>
+<div id="what-does-this-package-do-for-me" class="section level2">
+<h2 class="hasAnchor">
+<a href="#what-does-this-package-do-for-me" class="anchor"></a>What does this package do for me?</h2>
+<p><code>mapscanner</code> is an <strong>R</strong> package that enables maps to be printed out, drawn on, scanned back in, and have the drawn components converted to spatial objects. It is intended for use in social surveys and similar endeavours in which printed paper maps are preferred over digital screens, and enables marks drawn by hand on paper maps to be converted to spatial objects. The use of paper maps is often advantageous because</p>
+<p>(i) they cost much less than computer devices otherwise needed for digital equivalents; and (ii) they may in many situations be deemed to yield more reliable or accurate results through removing the psychological barriers often associated with screen-based surveys.</p>
+</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>installation</h2>
@@ -85,6 +91,26 @@
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>usage</h2>
+<p>The package is designed to enable the following workflow:</p>
+<ol>
+<li><p>Generate a map with the <a href="https://mpadge.github.io/mapscanner/reference/ms_generate_map.html"><code><a href="reference/ms_generate_map.html">ms_generate_map()</a></code></a> function, which automatically produces both <code>.pdf</code> and <code>.png</code> versions;</p></li>
+<li><p>Print the <code>.pdf</code> version to use as desired in any kind of survey environment;</p></li>
+<li><p>Draw on the map;</p></li>
+<li><p>Digitise the drawn-on (from here on, “modified”) map, converting it to either <code>.pdf</code> or <code>.png</code> format; and</p></li>
+<li><p>Rectify the modified version against the original via the <a href="https://mpadge.github.io/mapscanner/reference/ms_rectify_maps.html"><code><a href="reference/ms_rectify_maps.html">ms_rectify_maps()</a></code></a> function, which distinguishes individual annotations, and converts each one to a spatial object able to be analysed in any desired manner.</p></li>
+</ol>
+<div id="practical-tips" class="section level3">
+<h3 class="hasAnchor">
+<a href="#practical-tips" class="anchor"></a>Practical tips</h3>
+<p>Unlike most software packages, <code>mapscanner</code> is intended to aid a <em>practical</em> workflow, and so a few practical tips may be recommended here to ensure best results:</p>
+<ol>
+<li>The original digital files generated with <a href="https://mpadge.github.io/mapscanner/reference/ms_generate_map.html"><code><a href="reference/ms_generate_map.html">ms_generate_map()</a></code></a> are necessary to rectify subsequently drawn-on and scanned maps, and so must be retained at all times.</li>
+<li>Marks drawn on maps should be <em>coloured</em> – any black or grey markings will be ignored. This has the advantage that individual annotations <em>not</em> intended to be converted to spatial objects (such as unique identification or participant codes) may be made on maps in black or grey.</li>
+<li>For drawings of areas, care should be taken to ensure all lines form closed polygons; only in cases where this is not possible or practicable, the <code>type = "hulls"</code> argument should be used in map rectification, as described further below.</li>
+<li>Digitised versions should contain <em>white</em> borders, so do not, for example, photograph modified maps lying on dark surfaces. If maps are to be photographed, then best results can be achieved by simply placing them on a larger, enclosing sheet of white paper.</li>
+</ol>
+<p>The following two sections describe the two primary functions of the <code>mapscanner</code> package, corresponding to the two primary steps of producing maps to be used in surveys, and rectifying modified maps against these originals in order to extract spatial objects. The second of these sections also describes the kinds of markings able to be recognised, and the kinds of spatial objects to which these may be converted.</p>
+</div>
 <div id="mapbox-api-tokens" class="section level3">
 <h3 class="hasAnchor">
 <a href="#mapbox-api-tokens" class="anchor"></a>Mapbox API tokens</h3>
@@ -118,7 +144,7 @@
 <a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; ❯ converting to spatial format </span></a>
 <a class="sourceLine" id="cb6-10" data-line-number="10">✔ converting to spatial format</a>
 <a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt;    user  system elapsed </span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt;  50.908   0.704  13.183</span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt;  39.881   0.739  11.675</span></a>
 <a class="sourceLine" id="cb6-13" data-line-number="13">res</a>
 <a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; Simple feature collection with 2 features and 0 fields</span></a>
 <a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; geometry type:  POLYGON</span></a>
