@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Print Maps, Draw on Them, Scan Them Back In • mapscanner</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Print Maps, Draw on Them, Scan Them Back In">
 <meta property="og:description" content="Print maps, draw on them, scan them back in, and convert to spatial
     objects.">
@@ -19,7 +20,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-article">
+    <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -63,13 +64,9 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
-  <div class="col-md-9 contents">
-    
 
-    
-    
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+      </header><div class="row">
+  <div class="contents col-md-9">
 <div id="mapscanner" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#mapscanner" class="anchor"></a>mapscanner <img src="http://www.textfiles.com/underconstruction/CoColosseumHoop5020underconstruction_blk.gif">
@@ -83,7 +80,7 @@
 <p><code>mapscanner</code> is not (yet) on CRAN. The development version can be installed with</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">remote<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"mpadge/mapscanner"</span>)</a></code></pre></div>
 <p>The package can then be loaded for usage in a R session with</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span> (mapscanner)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> (mapscanner)</a></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -98,21 +95,21 @@
 <div id="map-generation" class="section level3">
 <h3 class="hasAnchor">
 <a href="#map-generation" class="anchor"></a>Map generation</h3>
-<p>Having obtained and set a <a href="https://mapbox.com"><code>mapbox</code></a> token as described above, <code>mapscanner</code> may then be used to generate maps. The package comes with a sample map of Omaha, Nebraska, USA, and one with some red lines drawn on it: <img src="reference/figures/omaha-polygons.png"></p>
+<p>Having obtained and set a <a href="https://mapbox.com"><code>mapbox</code></a> token as described above, <code>mapscanner</code> may then be used to generate maps. The package comes with a sample map of Omaha, Nebraska, USA, and one with some red lines drawn on it: <img src="./man/figures/omaha-polygons.png"></p>
 <p>That’s just a standard <code>png</code> image with no notion of geographical coordinates. The original map was generated with</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">bbox &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cbind">rbind</a></span> (<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span> (<span class="op">-</span><span class="fl">96.12923</span>, <span class="fl">-96.01011</span>),</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">               <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span> (<span class="fl">41.26145</span>, <span class="fl">41.32220</span>)) <span class="co"># portion of omaha</span></a>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">bbox &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span> (<span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span> (<span class="op">-</span><span class="fl">96.12923</span>, <span class="fl">-96.01011</span>),</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">               <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span> (<span class="fl">41.26145</span>, <span class="fl">41.32220</span>)) <span class="co"># portion of omaha</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw"><a href="reference/ms_generate_map.html">ms_generate_map</a></span> (bbox, <span class="dt">max_tiles =</span> 16L, <span class="dt">mapname =</span> <span class="st">"omaha"</span>)</a></code></pre></div>
-<pre><code>#&gt; Successfully generated 'omaha.pdf' and 'omaha.png'</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co">#&gt; Successfully generated 'omaha.pdf' and 'omaha.png'</span></a></code></pre></div>
 <p>As indicated, the function generates a map in both <code>.pdf</code> and <code>.png</code> formats. These files must be retained as the “master” maps against which subsequently modified – drawn-over and scanned-in – versions will be rectified. The <code>.pdf</code> format is generated because it will generally be the most convenient for printing, while the rectification itself requires <code>.png</code>-format images.</p>
 </div>
 <div id="map-rectification" class="section level3">
 <h3 class="hasAnchor">
 <a href="#map-rectification" class="anchor"></a>Map rectification</h3>
 <p>The magic within the <code>mapscanner</code> package happens via the <a href="https://github.com/jonclayden/RNiftyReg"><code>RNiftyReg</code> package</a>, itself primarily intended to align brain scans and other medical images, but which is precisely the tool needed here. The package comes with two sample <code>.png</code> images which can be used to demonstrate map rectification. In the following code, <code>f_modified</code> is the image shown above, modified from the original by drawing a red line around a particular region of Omaha.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">f_orig &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span> (<span class="st">"extdata"</span>, <span class="st">"omaha.png"</span>, <span class="dt">package =</span> <span class="st">"mapscanner"</span>)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">f_mod &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span> (<span class="st">"extdata"</span>, <span class="st">"omaha-polygons.png"</span>, <span class="dt">package =</span> <span class="st">"mapscanner"</span>)</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.time">system.time</a></span> (res &lt;-<span class="st"> </span><span class="kw"><a href="reference/ms_rectify_maps.html">ms_rectify_maps</a></span> (f_orig, f_mod, <span class="dt">type =</span> <span class="st">"polygons"</span>))</a>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">f_orig &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span> (<span class="st">"extdata"</span>, <span class="st">"omaha.png"</span>, <span class="dt">package =</span> <span class="st">"mapscanner"</span>)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">f_mod &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span> (<span class="st">"extdata"</span>, <span class="st">"omaha-polygons.png"</span>, <span class="dt">package =</span> <span class="st">"mapscanner"</span>)</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span> (res &lt;-<span class="st"> </span><span class="kw"><a href="reference/ms_rectify_maps.html">ms_rectify_maps</a></span> (f_orig, f_mod, <span class="dt">type =</span> <span class="st">"polygons"</span>))</a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; ══ mapscanner ═════════════════════════════════════════════════════════════</span></a>
 <a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; ❯ rectifying the two maps </span></a>
 <a class="sourceLine" id="cb6-6" data-line-number="6">✔ rectifying the two maps </a>
@@ -121,19 +118,19 @@
 <a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; ❯ converting to spatial format </span></a>
 <a class="sourceLine" id="cb6-10" data-line-number="10">✔ converting to spatial format</a>
 <a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt;    user  system elapsed </span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt;  23.831   0.836  14.623</span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt;  50.908   0.704  13.183</span></a>
 <a class="sourceLine" id="cb6-13" data-line-number="13">res</a>
 <a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; Simple feature collection with 2 features and 0 fields</span></a>
 <a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; geometry type:  POLYGON</span></a>
 <a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; dimension:      XY</span></a>
-<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; bbox:           xmin: -96.09474 ymin: 41.27929 xmax: -96.04931 ymax: 41.29681</span></a>
+<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; bbox:           xmin: -96.11764 ymin: 41.26657 xmax: -96.02752 ymax: 41.3008</span></a>
 <a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt; epsg (SRID):    4326</span></a>
 <a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt; proj4string:    +proj=longlat +datum=WGS84 +no_defs</span></a>
 <a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt;                         geometry</span></a>
-<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt; 1 POLYGON ((-96.05646 41.2945...</span></a>
-<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt; 2 POLYGON ((-96.09474 41.2808...</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt; 1 POLYGON ((-96.04196 41.2963...</span></a>
+<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt; 2 POLYGON ((-96.11764 41.2697...</span></a></code></pre></div>
 <p>The rectification can take quite some time, during which <a href="https://github.com/jonclayden/RNiftyReg"><code>RNiftyReg</code> package</a> is constructing the best transformation of the modified image back on to the original. The result of <code><a href="reference/ms_rectify_maps.html">ms_rectify_maps()</a></code> is a spatial object in <a href="https://cran.r-project.org/package=sf"><code>sf</code></a>-format in which each drawn component is represented as a separate polygon. Finally, we can plot the result as an interactive map using packages like <a href="https://github.com/symbolixAU/mapdeck"><code>mapdeck</code></a>, or <a href="https://github.com/r-spatial/mapview"><code>mapview</code></a>:</p>
-<p><img src="reference/figures/leaflet-1.png"></p>
+<p><img src="./man/figures/leaflet-1.png"></p>
 <p>And our hand-drawn lines shown above have been converted to standard spatial objects able to be analysed in any desired way. See the <a href="https://mpadge.github.io/mapscanner/articles/mapscanner.html">package vignette</a> for more detail of what the <code>mapscanner</code> package can do.</p>
 </div>
 </div>
@@ -158,6 +155,13 @@
 </li>
 </ul>
 </div>
+<div class="community">
+<h2>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
+<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+</ul>
+</div>
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
@@ -167,8 +171,7 @@
 </ul>
 </div>
 
-
-      <div class="dev-status">
+  <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://travis-ci.org/mpadge/mapscanner"><img src="https://travis-ci.org/mpadge/mapscanner.svg?branch=master" alt="Travis build status"></a></li>
@@ -178,7 +181,6 @@
 </ul>
 </div>
 </div>
-
 </div>
 
 
@@ -187,12 +189,14 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>
