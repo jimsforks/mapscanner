@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • mapscanner</title>
+<title>ms_rotate_map — ms_rotate_map • mapscanner</title>
 
 
 <!-- jquery -->
@@ -35,7 +35,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="ms_rotate_map — ms_rotate_map" />
+<meta property="og:description" content="Display original and modified maps to determine necessary rotation" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -54,7 +56,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -101,90 +103,62 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>ms_rotate_map</h1>
+    <small class="dont-index">Source: <a href='https://github.com/mpadge/mapscanner/blob/master/R/file-manipulation.R'><code>R/file-manipulation.R</code></a></small>
+    <div class="hidden name"><code>ms_rotate_map.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Display original and modified maps to determine necessary rotation</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>ms_rotate_map</span>(<span class='no'>map_original</span>, <span class='no'>map_modified</span>, <span class='kw'>rotation</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>apply_rotation</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-package-doc" class="hasAnchor"><a href="#section-package-doc" class="anchor"></a>Package doc</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="mapscanner-package.html">mapscanner-package</a></code> </p>
-        </td>
-        <td><p>mapscanner: Print Maps, Draw on Them, Scan Them Back In</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-the-main-functions" class="hasAnchor"><a href="#section-the-main-functions" class="anchor"></a>The Main Functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="ms_generate_map.html">ms_generate_map()</a></code> </p>
-        </td>
-        <td><p>ms_generate_map</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ms_rectify_maps.html">ms_rectify_maps()</a></code> </p>
-        </td>
-        <td><p>ms_rectify_maps</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-bonus-features" class="hasAnchor"><a href="#section-bonus-features" class="anchor"></a>Bonus Features</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="ms_aggregate_polys.html">ms_aggregate_polys()</a></code> </p>
-        </td>
-        <td><p>Aggregate disparate polygons</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ms_rotate_map.html">ms_rotate_map()</a></code> </p>
-        </td>
-        <td><p>ms_rotate_map</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="set_mapbox_token.html">set_mapbox_token()</a></code> </p>
-        </td>
-        <td><p>set_mapbox_token</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>map_original</th>
+      <td><p>File name of the original map without anything drawn over
+it (either a <code>.pdf</code> or <code>.png</code>; extension will be ignored).</p></td>
+    </tr>
+    <tr>
+      <th>map_modified</th>
+      <td><p>File name of the modified version with drawings (either a
+<code>.pdf</code> or <code>.png</code>; extension will be ignored).</p></td>
+    </tr>
+    <tr>
+      <th>rotation</th>
+      <td><p>Rotation value to be applied, generally +/- 90</p></td>
+    </tr>
+    <tr>
+      <th>apply_rotation</th>
+      <td><p>If <code>FALSE</code>, display results of rotation without
+actually applying it; otherwise transform the specified <code>map_modified</code> image
+according to the specified rotation.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>If a call to <a href='ms_rectify_maps.html'>ms_rectify_maps</a> detects potential image rotation,
+that function will stop and suggest that rotation be applied using this
+function in order to determine the required degree of image rotation. Values
+for <code>rotation</code> can be trialled in order to determine the correct value,
+following which that value can be entered with <code>apply_rotation = TRUE</code> in
+order to actually apply that rotation to the modified image.</p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-package-doc">Package doc</a></li>
-      <li><a href="#section-the-main-functions">The Main Functions</a></li>
-      <li><a href="#section-bonus-features">Bonus Features</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#note">Note</a></li>
     </ul>
+
   </div>
 </div>
 
