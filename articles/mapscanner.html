@@ -70,7 +70,7 @@
       <h1>mapscanner</h1>
                         <h4 class="author">Mark Padgham and Michael D. Sumner</h4>
             
-            <h4 class="date">2019-09-25</h4>
+            <h4 class="date">2019-10-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mpadge/mapscanner/blob/master/vignettes/mapscanner.Rmd"><code>vignettes/mapscanner.Rmd</code></a></small>
       <div class="hidden name"><code>mapscanner.Rmd</code></div>
@@ -169,20 +169,20 @@
 ✔ Estimated number of items on map: 4
 ## ❯ Estimating optimal signal-to-noise threshold
 ✔ Estimated optimal signal-to-noise threshold
-## ✔ removed 1 anomalously detected item
 ## ❯ converting to spatial format 
 ✔ converting to spatial format</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">xy</a></code></pre></div>
-<pre><code>## Simple feature collection with 3 features and 0 fields
+<pre><code>## Simple feature collection with 4 features and 0 fields
 ## geometry type:  POLYGON
 ## dimension:      XY
-## bbox:           xmin: -96.11814 ymin: 41.26638 xmax: -96.02722 ymax: 41.30109
+## bbox:           xmin: -96.11963 ymin: 41.27 xmax: -96.05145 ymax: 41.31658
 ## epsg (SRID):    4326
 ## proj4string:    +proj=longlat +datum=WGS84 +no_defs
 ##                         geometry
-## 1 POLYGON ((-96.11589 41.2663...
-## 2 POLYGON ((-96.11216 41.2703...
-## 3 POLYGON ((-96.03544 41.2927...</code></pre>
+## 1 POLYGON ((-96.11285 41.3165...
+## 2 POLYGON ((-96.11175 41.3134...
+## 3 POLYGON ((-96.0531 41.27636...
+## 4 POLYGON ((-96.06135 41.2714...</code></pre>
 <p>The result of <a href="https://mpadge.github.io/mapscanner/reference/ms_rectify_maps.html"><code><a href="../reference/ms_rectify_maps.html">ms_rectify_maps()</a></code></a> can be plotted using any standard option for plotting spatial data, such as through online mapping packages such as <code>mapview</code>:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">xy<span class="op">$</span>id &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span> (<span class="kw"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span> (xy))</a>
 <a class="sourceLine" id="cb17-2" data-line-number="2">mapview<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/mapview/man/mapView.html">mapview</a></span> (xy)</a></code></pre></div>
