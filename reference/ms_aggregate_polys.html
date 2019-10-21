@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mapscanner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.3</span>
       </span>
     </div>
 
@@ -147,7 +147,7 @@
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sf</span>)</div><div class='output co'>#&gt; <span class='message'>Linking to GEOS 3.5.1, GDAL 2.2.2, PROJ 4.9.2</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>6</span>)
 <span class='no'>pts</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/expand.grid.html'>expand.grid</a></span> (<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>8</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>10</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/pkg/sf/man/st_as_sf.html'>st_as_sf</a></span> (<span class='kw'>coords</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"x"</span>, <span class='st'>"y"</span>))
 <span class='no'>xsf</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sf</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sf/man/geos_unary.html'>st_buffer</a></span> (<span class='no'>pts</span>, <span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span> (<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span> (<span class='no'>pts</span>), <span class='fl'>0.2</span>, <span class='fl'>1.5</span>))
-<span class='co'># system.time (out &lt;- ms_aggregate_polys (xsf))</span></div></pre>
+<span class='co'># out &lt;- ms_aggregate_polys (xsf)</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
