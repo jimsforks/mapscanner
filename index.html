@@ -126,7 +126,7 @@
 <a class="sourceLine" id="cb4-2" data-line-number="2">               <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span> (<span class="fl">41.26145</span>, <span class="fl">41.32220</span>)) <span class="co"># portion of omaha</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw"><a href="reference/ms_generate_map.html">ms_generate_map</a></span> (bbox, <span class="dt">max_tiles =</span> 16L, <span class="dt">mapname =</span> <span class="st">"omaha"</span>)</a></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co">#&gt; Successfully generated 'omaha.pdf' and 'omaha.png'</span></a></code></pre></div>
-<p>As indicated, the function generates a map in both <code>.pdf</code> and <code>.png</code> formats. These files must be retained as the “master” maps against which subsequently modified – drawn-over and scanned-in – versions will be rectified. The <code>.pdf</code> format is generated because it will generally be the most convenient for printing, while the rectification itself requires <code>.png</code>-format images.</p>
+<p>As indicated, the function generates a map in both <code>.pdf</code> and <code>.png</code> formats. These files must be retained as the “master” maps against which subsequently modified – drawn-over and scanned-in – versions will be rectified.</p>
 </div>
 <div id="map-rectification" class="section level3">
 <h3 class="hasAnchor">
@@ -134,7 +134,7 @@
 <p>The magic within the <code>mapscanner</code> package happens via the <a href="https://github.com/jonclayden/RNiftyReg"><code>RNiftyReg</code> package</a>, itself primarily intended to align brain scans and other medical images, but which is precisely the tool needed here. The package comes with two sample <code>.png</code> images which can be used to demonstrate map rectification. In the following code, <code>f_modified</code> is the image shown above, modified from the original by drawing a red line around a particular region of Omaha.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">f_orig &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span> (<span class="st">"extdata"</span>, <span class="st">"omaha.png"</span>, <span class="dt">package =</span> <span class="st">"mapscanner"</span>)</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">f_mod &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span> (<span class="st">"extdata"</span>, <span class="st">"omaha-polygons.png"</span>, <span class="dt">package =</span> <span class="st">"mapscanner"</span>)</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span> (res &lt;-<span class="st"> </span><span class="kw"><a href="reference/ms_rectify_maps.html">ms_rectify_maps</a></span> (f_orig, f_mod, <span class="dt">type =</span> <span class="st">"polygons"</span>))</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">res &lt;-<span class="st"> </span><span class="kw"><a href="reference/ms_rectify_maps.html">ms_rectify_maps</a></span> (f_orig, f_mod, <span class="dt">type =</span> <span class="st">"polygons"</span>)</a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; ══ mapscanner ═════════════════════════════════════════════════════════════</span></a>
 <a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; ❯ rectifying the two maps </span></a>
 <a class="sourceLine" id="cb6-6" data-line-number="6">✔ rectifying the two maps </a>
@@ -142,19 +142,25 @@
 <a class="sourceLine" id="cb6-8" data-line-number="8">✔ extracting drawn objects </a>
 <a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; ❯ converting to spatial format </span></a>
 <a class="sourceLine" id="cb6-10" data-line-number="10">✔ converting to spatial format</a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt;    user  system elapsed </span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt;  43.696   0.696  12.117</span></a>
-<a class="sourceLine" id="cb6-13" data-line-number="13">res</a>
-<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; Simple feature collection with 2 features and 0 fields</span></a>
-<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; geometry type:  POLYGON</span></a>
-<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; dimension:      XY</span></a>
-<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; bbox:           xmin: -96.11764 ymin: 41.26657 xmax: -96.02752 ymax: 41.3008</span></a>
-<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt; epsg (SRID):    4326</span></a>
-<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt; proj4string:    +proj=longlat +datum=WGS84 +no_defs</span></a>
-<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt;                         geometry</span></a>
-<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt; 1 POLYGON ((-96.04196 41.2963...</span></a>
-<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt; 2 POLYGON ((-96.11764 41.2697...</span></a></code></pre></div>
-<p>The rectification can take quite some time, during which <a href="https://github.com/jonclayden/RNiftyReg"><code>RNiftyReg</code> package</a> is constructing the best transformation of the modified image back on to the original. The result of <code><a href="reference/ms_rectify_maps.html">ms_rectify_maps()</a></code> is a spatial object in <a href="https://cran.r-project.org/package=sf"><code>sf</code></a>-format in which each drawn component is represented as a separate polygon. Finally, we can plot the result as an interactive map using packages like <a href="https://github.com/symbolixAU/mapdeck"><code>mapdeck</code></a>, or <a href="https://github.com/r-spatial/mapview"><code>mapview</code></a>:</p>
+<a class="sourceLine" id="cb6-11" data-line-number="11">res</a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; Simple feature collection with 2 features and 0 fields</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; geometry type:  POLYGON</span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14"><span class="co">#&gt; dimension:      XY</span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="co">#&gt; bbox:           xmin: -96.11764 ymin: 41.26657 xmax: -96.02752 ymax: 41.3008</span></a>
+<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="co">#&gt; epsg (SRID):    4326</span></a>
+<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; proj4string:    +proj=longlat +datum=WGS84 +no_defs</span></a>
+<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt;                         geometry</span></a>
+<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt; 1 POLYGON ((-96.04196 41.2963...</span></a>
+<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt; 2 POLYGON ((-96.11764 41.2697...</span></a></code></pre></div>
+<p>The rectification can take quite some time, during which <a href="https://github.com/jonclayden/RNiftyReg"><code>RNiftyReg</code> package</a> is constructing the best transformation of the modified image back on to the original. The result of <code><a href="reference/ms_rectify_maps.html">ms_rectify_maps()</a></code> is a spatial object in <a href="https://cran.r-project.org/package=sf"><code>sf</code></a>-format in which each drawn component is represented as a separate polygon. Finally, we can plot the result as an interactive map using packages like <a href="https://github.com/r-spatial/mapview"><code>mapview</code></a> with the following commands:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> (mapview)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/pkg/mapview/man/mapView.html">mapview</a></span> (res)</a></code></pre></div>
+<p>or <a href="https://github.com/symbolixAU/mapdeck"><code>mapdeck</code></a>, which similarly requires a mapbox token:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> (mapdeck)</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">set_token</span> (<span class="kw"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span> (<span class="st">"&lt;my_mapbox_token&gt;"</span>))</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw">mapdeck</span> () <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="st">    </span><span class="kw">add_polygon</span> (res, <span class="dt">fill_colour =</span> <span class="st">"#ffff00cc"</span>,</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">                 <span class="dt">stroke_colour =</span> <span class="st">"#ff0000"</span>, <span class="dt">stroke_width =</span> <span class="dv">20</span>)</a></code></pre></div>
 <p><img src="./man/figures/leaflet-1.png"></p>
 <p>And our hand-drawn lines shown above have been converted to standard spatial objects able to be analysed in any desired way. See the <a href="https://mpadge.github.io/mapscanner/articles/mapscanner.html">package vignette</a> for more detail of what the <code>mapscanner</code> package can do.</p>
 </div>
