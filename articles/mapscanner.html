@@ -157,7 +157,10 @@
 <a href="#map-rectification" class="anchor"></a>Map rectification</h2>
 <p>Having produced digital maps using the <a href="https://mpadge.github.io/mapscanner/reference/ms_generate_map.html"><code><a href="../reference/ms_generate_map.html">ms_generate_map()</a></code></a> function as described above, and having printed, variously drawn-on, and, for paper maps, scanned the result back in to digital form, the package can then be used to rectify the hand-drawn markings against the original map with the <a href="https://mpadge.github.io/mapscanner/reference/ms_rectify_maps.html"><code><a href="../reference/ms_rectify_maps.html">ms_rectify_maps()</a></code></a> function, which returns the drawn-on objects as spatial objects in <a href="https://cran.r-project.org/package=sf">Simple Features (<code>sf</code>)</a> format. The only requirement is that the drawn-on objects are coloured; black or grey objects will be ignored. As described above, this has the advantage that maps may be annotated in ways not intended to be converted to spatial objects (such as adding unique identification or participant codes), through simply providing such annotations in grey or black.</p>
 <p>The <a href="https://mpadge.github.io/mapscanner/reference/ms_rectify_maps.html"><code><a href="../reference/ms_rectify_maps.html">ms_rectify_maps()</a></code></a> function has two primary arguments, specifying the names (and locations) of the original and modified map files – in that order: <code><a href="../reference/ms_rectify_maps.html">ms_rectify_maps(original, modified)</a></code>. These files should ideally be in <code>.png</code> formats, but will be auto-converted from <code>.pdf</code> if needed. The package comes with two sample maps, both in <code>.png</code> format. The first is the reference version needed for rectification, while the second has two red lines drawn upon it:</p>
-<p><img src="omaha-polygons.png" width="600" height="400"></p>
+<!--
+<img src="/home/travis/build/mpadge/mapscanner/vignettes/omaha-polygons.png" width="600" height="400"/>
+-->
+<p><img src="omaha-polygons.png" width="75%"></p>
 <p>Converting the lines on this scanned image file is then as simple as:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">f_orig &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span> (<span class="st">"extdata"</span>, <span class="st">"omaha.png"</span>, <span class="dt">package =</span> <span class="st">"mapscanner"</span>)</a>
 <a class="sourceLine" id="cb11-2" data-line-number="2">f_mod &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span> (<span class="st">"extdata"</span>, <span class="st">"omaha-polygons.png"</span>, <span class="dt">package =</span> <span class="st">"mapscanner"</span>)</a>
@@ -184,7 +187,10 @@
 <p>The result of <a href="https://mpadge.github.io/mapscanner/reference/ms_rectify_maps.html"><code><a href="../reference/ms_rectify_maps.html">ms_rectify_maps()</a></code></a> can be plotted using any standard option for plotting spatial data, such as through online mapping packages such as <code>mapview</code>:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">xy<span class="op">$</span>id &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span> (<span class="kw"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span> (xy))</a>
 <a class="sourceLine" id="cb17-2" data-line-number="2">mapview<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/mapview/man/mapView.html">mapview</a></span> (xy)</a></code></pre></div>
-<p><img src="mapshot-polys.png"></p>
+<!--
+![](mapshot-polys.png)
+-->
+<p><img src="mapshot-hulls.png" width="75%"></p>
 <div id="types-of-map-markings-and-types-of-spatial-objects" class="section level3">
 <h3 class="hasAnchor">
 <a href="#types-of-map-markings-and-types-of-spatial-objects" class="anchor"></a>Types of map markings and types of spatial objects</h3>
@@ -204,13 +210,19 @@
 <a class="sourceLine" id="cb18-3" data-line-number="3">xy &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ms_rectify_maps.html">ms_rectify_maps</a></span> (f_orig, f_mod, <span class="dt">type =</span> <span class="st">"polygons"</span>, <span class="dt">quiet =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">xy<span class="op">$</span>id &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span> (<span class="kw"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span> (xy))</a>
 <a class="sourceLine" id="cb19-2" data-line-number="2">mapview<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/mapview/man/mapView.html">mapview</a></span> (xy)</a></code></pre></div>
-<p><img src="mapshot-hulls.png"></p>
+<!--
+![](mapshot-polys.png)
+-->
+<p><img src="mapshot-polys.png" width="75%"></p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">f_orig &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span> (<span class="st">"extdata"</span>, <span class="st">"omaha.png"</span>, <span class="dt">package =</span> <span class="st">"mapscanner"</span>)</a>
 <a class="sourceLine" id="cb20-2" data-line-number="2">f_mod &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span> (<span class="st">"extdata"</span>, <span class="st">"omaha-polygons.png"</span>, <span class="dt">package =</span> <span class="st">"mapscanner"</span>)</a>
 <a class="sourceLine" id="cb20-3" data-line-number="3">xy &lt;-<span class="st"> </span><span class="kw"><a href="../reference/ms_rectify_maps.html">ms_rectify_maps</a></span> (f_orig, f_mod, <span class="dt">type =</span> <span class="st">"points"</span>, <span class="dt">quiet =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">xy<span class="op">$</span>id &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span> (<span class="kw"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span> (xy))</a>
 <a class="sourceLine" id="cb21-2" data-line-number="2">mapview<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/mapview/man/mapView.html">mapview</a></span> (xy)</a></code></pre></div>
-<p><img src="mapshot-points.png"></p>
+<!--
+![](mapshot-points.png)
+-->
+<p><img src="mapshot-points.png" width="75%"></p>
 </div>
 </div>
 <div id="bonus-feature-polygon-aggregation" class="section level2">
