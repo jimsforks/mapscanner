@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mapscanner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.11</span>
       </span>
     </div>
 
@@ -70,7 +70,7 @@
       <h1>mapscanner</h1>
                         <h4 class="author">Mark Padgham and Michael D. Sumner</h4>
             
-            <h4 class="date">2020-01-27</h4>
+            <h4 class="date">2020-02-02</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mpadge/mapscanner/blob/master/vignettes/mapscanner.Rmd"><code>vignettes/mapscanner.Rmd</code></a></small>
       <div class="hidden name"><code>mapscanner.Rmd</code></div>
@@ -185,12 +185,12 @@ ggplot | mapshot } inst size | vignettes size
 <pre><code>## Simple feature collection with 2 features and 0 fields
 ## geometry type:  POLYGON
 ## dimension:      XY
-## bbox:           xmin: -96.11266 ymin: 41.26479 xmax: -95.97906 ymax: 41.28837
+## bbox:           xmin: -96.11801 ymin: 41.26638 xmax: -96.02722 ymax: 41.30108
 ## epsg (SRID):    4326
 ## proj4string:    +proj=longlat +datum=WGS84 +no_defs
 ##                         geometry
-## 1 POLYGON ((-96.09635 41.2661...
-## 2 POLYGON ((-95.97961 41.2851...</code></pre>
+## 1 POLYGON ((-96.10692 41.2684...
+## 2 POLYGON ((-96.0276 41.2964,...</code></pre>
 <p>The result of <a href="https://mpadge.github.io/mapscanner/reference/ms_rectify_maps.html"><code><a href="../reference/ms_rectify_maps.html">ms_rectify_maps()</a></code></a> can be plotted using any standard option for plotting spatial data, such as through online mapping packages such as <code>mapview</code>:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">xy<span class="op">$</span>id &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/seq.html">seq</a></span> (<span class="kw"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span> (xy))</a>
 <a class="sourceLine" id="cb13-2" data-line-number="2">mapview<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/mapview/man/mapView.html">mapview</a></span> (xy)</a></code></pre></div>
