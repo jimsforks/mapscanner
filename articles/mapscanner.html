@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mapscanner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.12</span>
       </span>
     </div>
 
@@ -70,7 +70,7 @@
       <h1>mapscanner</h1>
                         <h4 class="author">Mark Padgham and Michael D. Sumner</h4>
             
-            <h4 class="date">2020-02-02</h4>
+            <h4 class="date">2020-02-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/mpadge/mapscanner/blob/master/vignettes/mapscanner.Rmd"><code>vignettes/mapscanner.Rmd</code></a></small>
       <div class="hidden name"><code>mapscanner.Rmd</code></div>
@@ -253,13 +253,14 @@ ggplot | mapshot } inst size | vignettes size
 <a class="sourceLine" id="cb19-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span> (ggplot2)</a>
 <a class="sourceLine" id="cb19-6" data-line-number="6"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span> (polys, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span> (<span class="dt">fill =</span> n)) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span> () <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span> (<span class="op">~</span>type)</a></code></pre></div>
 <pre><code>## Loading required namespace: gibble</code></pre>
+<pre><code>## Loading required namespace: polyclip</code></pre>
 <p><img src="mapscanner_files/figure-html/random-polys-1.png" width="700"></p>
 <p>The left panel of that figure shows the random polygons in raw form successively overlaid upon one another. The right panel shows the aggregated contours of successive overlap from 1 to 5. The object returned from <a href="https://mpadge.github.io/mapscanner/reference/ms_aggregate_polys.html"><code><a href="../reference/ms_aggregate_polys.html">ms_aggregate_polys()</a></code></a> contains polygons ordered by level of aggregation (<code>n</code>), so the first entirely encloses the second; the second encloses the third; and so on. Particular contours can then be directly selected by filtering for desired values of <code>n</code>:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span> (aggr [aggr<span class="op">$</span>n <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span> (<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>), ], <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span> (<span class="dt">fill =</span> n)) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span> ()</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span> (aggr [aggr<span class="op">$</span>n <span class="op">%in%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span> (<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>), ], <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span> (<span class="dt">fill =</span> n)) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span> ()</a></code></pre></div>
 <p><img src="mapscanner_files/figure-html/aggr13-1.png" width="700"></p>
 <p>Polygon aggregation enables many interesting analyses to be performed, such as relationships between aggregation level and area:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">aggr<span class="op">$</span>area &lt;-<span class="st"> </span>sf<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/sf/man/geos_measures.html">st_area</a></span> (aggr)</a>
-<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span> (aggr, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span> (<span class="dt">x =</span> n, <span class="dt">y =</span> area)) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span> (<span class="dt">size =</span> <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">aggr<span class="op">$</span>area &lt;-<span class="st"> </span>sf<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/sf/man/geos_measures.html">st_area</a></span> (aggr)</a>
+<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span> (aggr, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span> (<span class="dt">x =</span> n, <span class="dt">y =</span> area)) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span> (<span class="dt">size =</span> <span class="dv">2</span>)</a></code></pre></div>
 <p><img src="mapscanner_files/figure-html/aggr-area-1.png" width="700"></p>
 <p>That result is of course (roughly) linear, because it was derived from random data. In actual usage, results such as that are likely to generate direct insight into consensus of opinion regarding how people understand particular areas.</p>
 </div>
@@ -268,7 +269,7 @@ ggplot | mapshot } inst size | vignettes size
 <a href="#how-it-works" class="anchor"></a>How it works</h2>
 <p>(This section is not necessary for package usage, and merely provides detail for those interested in how the process actually works.) <code>mapscanner</code> primarily relies on the <a href="https://github.com/jonclayden/RNiftyReg"><code>RNiftyReg</code> package</a> to rectify the images. This package is itself primarily aimed at rectifying medical scans, but also happens to be the perfect tool for the present purposes. Being an image analysis software, the library requires image objects, and not <code>pdf</code> files, which is why the <a href="https://mpadge.github.io/mapscanner/reference/ms_generate_map.html"><code><a href="../reference/ms_generate_map.html">ms_generate_map()</a></code></a> function produces both kinds of files - the <code>.pdf</code> for printing and the <code>.png</code> for rectifying with the <code>RNiftyReg</code> package.</p>
 <p>Rectification re-projects a scanned image back on to the coordinate system of an original image. This coordinate system translates here in to a defined bounding box (which may differ slightly from the values input into the function, due to the cutting and stitching of the vector tiles). This bounding box is embedded as meta-information in both the files produced by <a href="https://mpadge.github.io/mapscanner/reference/ms_generate_map.html"><code><a href="../reference/ms_generate_map.html">ms_generate_map()</a></code></a>; in the <code>.pdf</code> as standard meta information accessible in <strong>R</strong> like this:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">pdftools<span class="op">::</span><span class="kw"><a href="https://docs.ropensci.org/pdftools/reference/pdftools.html">pdf_info</a></span> (<span class="st">"chennai.pdf"</span>)<span class="op">$</span>keys</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">pdftools<span class="op">::</span><span class="kw"><a href="https://docs.ropensci.org/pdftools/reference/pdftools.html">pdf_info</a></span> (<span class="st">"chennai.pdf"</span>)<span class="op">$</span>keys</a></code></pre></div>
 <pre><code>## $Title
 ## [1] "EX8921118.44521949+1442748.9088827+8942673.68719591+1486623.76311839"
 ## 
@@ -278,8 +279,8 @@ ggplot | mapshot } inst size | vignettes size
 ## $Creator
 ## [1] "R"</code></pre>
 <p>or in a terminal via <code>pdfinfo</code> (or non-linux equivalent), and embedded in the <code>.png</code> file as comment, accessible like this:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">img &lt;-<span class="st"> </span>magick<span class="op">::</span><span class="kw"><a href="https://docs.ropensci.org/magick/reference/editing.html">image_read</a></span> (<span class="st">"chennai.png"</span>)</a>
-<a class="sourceLine" id="cb25-2" data-line-number="2">magick<span class="op">::</span><span class="kw"><a href="https://docs.ropensci.org/magick/reference/attributes.html">image_comment</a></span> (img)</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">img &lt;-<span class="st"> </span>magick<span class="op">::</span><span class="kw"><a href="https://docs.ropensci.org/magick/reference/editing.html">image_read</a></span> (<span class="st">"chennai.png"</span>)</a>
+<a class="sourceLine" id="cb26-2" data-line-number="2">magick<span class="op">::</span><span class="kw"><a href="https://docs.ropensci.org/magick/reference/attributes.html">image_comment</a></span> (img)</a></code></pre></div>
 <pre><code>## [1] "EX8921118.44521949+1442748.9088827+8942673.68719591+1486623.76311839"</code></pre>
 <p>or in a terminal via <code>identify -verbose</code> command (itself part of the <code>imagemagick</code> library which drives the <a href="https://github.com/ropensci/magick"><code>magick</code> <strong>R</strong> package</a>).</p>
 </div>

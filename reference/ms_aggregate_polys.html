@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mapscanner</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.12</span>
       </span>
     </div>
 
@@ -142,7 +142,7 @@ considered.</p>
 <span class='no'>overlapping_polys</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>sf</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/sf/man/geos_unary.html'>st_buffer</a></span>(<span class='no'>pts</span>, <span class='fl'>0.75</span>)
 
 <span class='co'>## decompose and count space-filling from overlapping polygons</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>ms_aggregate_polys</span>(<span class='no'>overlapping_polys</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: dplyr</span></div><div class='output co'>#&gt; <span class='message'>Loading required namespace: gibble</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>x</span>)</div><div class='img'><img src='ms_aggregate_polys-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># library(ggplot2)</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>ms_aggregate_polys</span>(<span class='no'>overlapping_polys</span>)</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: dplyr</span></div><div class='output co'>#&gt; <span class='message'>Loading required namespace: gibble</span></div><div class='output co'>#&gt; <span class='message'>Loading required namespace: polyclip</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>x</span>)</div><div class='img'><img src='ms_aggregate_polys-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># library(ggplot2)</span>
 <span class='co'># ggplot(x) + geom_sf() + facet_wrap(~n)</span>
 
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>sf</span>)</div><div class='output co'>#&gt; <span class='message'>Linking to GEOS 3.7.1, GDAL 2.2.2, PROJ 4.9.2</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>6</span>)
